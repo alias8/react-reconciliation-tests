@@ -6,7 +6,7 @@ import { Clicker, ClickerMemo } from "./components";
 const App = () => {
   const [sequence, setSequence] = useState("");
   const letters = ["a", "b", "c", "d"];
-  const increment = useCallback(
+  const add = useCallback(
     (n) => {
       setSequence((c) => {
         return c + n;
@@ -25,7 +25,7 @@ const App = () => {
           <ClickerMemo
             key={n}
             n={n}
-            increment={increment}
+            increment={add}
             name={`${n} with memo`}
             inlineCallback={false}
           />
@@ -38,25 +38,25 @@ const App = () => {
           <ClickerMemo
             key={n}
             n={n}
-            increment={(n) => increment(n)}
+            increment={(n) => add(n)}
             name={`${n} with memo and inlineCallback`}
             inlineCallback={true}
           />
         );
       })}
 
-      {/*<div>Buttons without memo:</div>*/}
-      {/*{letters.map((n) => {*/}
-      {/*  return (*/}
-      {/*    <Clicker*/}
-      {/*      key={n}*/}
-      {/*      n={n}*/}
-      {/*      increment={increment}*/}
-      {/*      name={`${n} without memo`}*/}
-      {/*      inlineCallback={false}*/}
-      {/*    />*/}
-      {/*  );*/}
-      {/*})}*/}
+      <div>Buttons without memo:</div>
+      {letters.map((n) => {
+        return (
+          <Clicker
+            key={n}
+            n={n}
+            increment={add}
+            name={`${n} without memo`}
+            inlineCallback={false}
+          />
+        );
+      })}
     </div>
   );
 };
