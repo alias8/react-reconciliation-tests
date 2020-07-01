@@ -32,7 +32,7 @@ const App = () => {
         );
       })}
 
-      <div>Buttons with memo:</div>
+      <div>Buttons with memo and inlineCallback:</div>
       {letters.map((n) => {
         return (
           <ClickerMemo
